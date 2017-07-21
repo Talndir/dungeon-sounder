@@ -16,5 +16,3 @@ public:
 	bool exclusive_type;
 	bool exclusive_global;
 };
-
-std::vector<Sound> sounds;

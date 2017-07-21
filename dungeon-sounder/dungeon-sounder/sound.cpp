@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "sound.h"
 
 Sound::Sound(QJsonObject& soundObject)
@@ -12,7 +13,7 @@ Sound::Sound(QJsonObject& soundObject)
 	QString p = soundObject["path"].toString();
 	
 	if (p[0] == '$')
-		p = QString("/sounds").append(p.right(1));
+		p = QString("sounds").append(p.right(1));
 
 	this->path = p;
 }
