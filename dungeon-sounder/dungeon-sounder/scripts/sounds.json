@@ -1,0 +1,23 @@
+{
+	"sounds": [
+		{
+			"name": "rain",
+			"path": "$/weather/rain.wav",
+			"volume": 1.0,
+			"type": "weather",
+			"exclusive_single": "true",
+			"exclusive_type": "false",
+			"exclusive_global": "false"
+		}
+
+		{
+			"name": "thunder",
+			"path": "$/weather/thunder.wav",
+			"volume": 0.5,
+			"type": "weather",
+			"exclusive_single": "false",
+			"exclusive_type": "false",
+			"exclusive_global": "false"
+		}
+	]
+}

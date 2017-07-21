@@ -1,0 +1,60 @@
+{
+	"buttons": [
+		{
+			"name": "Thunderstorm",
+			"colour": "0000FF",
+			"sounds": [
+				{
+					"sound": "rain",
+					"volume": 1.0,
+					"delay": 0.0,
+					"loop": "true",
+					"sync": "false",
+					"fade": 0.0
+				},
+				{
+					"sound": "thunder",
+					"volume": 1.0,
+					"delay": 0.0,
+					"loop": "true",
+					"sync": "false",
+					"fade": 0.0
+				}
+			],
+			"exclusive_local": "true",
+			"exclusive_global": "false"
+		},
+		{
+			"name": "Rain",
+			"colour": "0000AA",
+			"sounds": [
+				{
+					"sound": "rain",
+					"volume": 1.0,
+					"delay": 0.0,
+					"loop": "true",
+					"sync": "false",
+					"fade": 0.0
+				}
+			],
+			"exclusive_local": "false",
+			"exclusive_global": "false"
+		},
+		{
+			"name": "Thunder",
+			"colour": "FFFFFF",
+			"sounds": [
+				{
+					"sound": "thunder",
+					"volume": 1.0,
+					"delay": 0.0,
+					"loop": "true",
+					"sync": "false",
+					"fade": 0.0
+				}
+			],
+			"exclusive_local": "false",
+			"exclusive_global": "false"
+		}
+	]
+}
