@@ -3,8 +3,12 @@
 #include <stdafx.h>
 #include <vector>
 
-struct Sound
+class Sound
 {
+public:
+	Sound(QJsonObject& soundObject);
+
+private:
 	QString name;
 	QString path;
 	float volume;
