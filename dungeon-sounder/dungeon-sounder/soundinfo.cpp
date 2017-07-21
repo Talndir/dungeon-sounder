@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "soundinfo.h"
 
 SoundInfo::SoundInfo(QJsonObject & soundObject)
