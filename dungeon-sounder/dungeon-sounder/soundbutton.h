@@ -2,7 +2,7 @@
 
 #include <QtWidgets/qpushbutton.h>
 #include <vector>
-#include "sound.h"
+#include "soundinfo.h"
 
 class SoundButton : public QPushButton
 {
