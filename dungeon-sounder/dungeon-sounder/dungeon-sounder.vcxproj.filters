@@ -17,6 +17,21 @@
     <ClCompile Include="GeneratedFiles\qrc_dungeonsounder.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="soundbutton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_soundbutton.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_soundbutton.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="soundinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -52,6 +67,12 @@
     <ClInclude Include="GeneratedFiles\ui_dungeonsounder.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="sound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="soundinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="dungeonsounder.h">
@@ -62,6 +83,9 @@
     </CustomBuild>
     <CustomBuild Include="dungeonsounder.qrc">
       <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="soundbutton.h">
+      <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

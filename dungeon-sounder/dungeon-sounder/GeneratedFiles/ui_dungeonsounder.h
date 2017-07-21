@@ -13,10 +13,12 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -25,9 +27,11 @@ QT_BEGIN_NAMESPACE
 class Ui_dungeonsounderClass
 {
 public:
+    QWidget *centralWidget;
+    QGridLayout *gridLayout;
+    QTabWidget *tabWidget;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
-    QWidget *centralWidget;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *dungeonsounderClass)
@@ -35,20 +39,33 @@ public:
         if (dungeonsounderClass->objectName().isEmpty())
             dungeonsounderClass->setObjectName(QStringLiteral("dungeonsounderClass"));
         dungeonsounderClass->resize(600, 400);
+        centralWidget = new QWidget(dungeonsounderClass);
+        centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        gridLayout = new QGridLayout(centralWidget);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        tabWidget = new QTabWidget(centralWidget);
+        tabWidget->setObjectName(QStringLiteral("tabWidget"));
+
+        gridLayout->addWidget(tabWidget, 0, 0, 1, 1);
+
+        dungeonsounderClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(dungeonsounderClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 600, 26));
         dungeonsounderClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(dungeonsounderClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        dungeonsounderClass->addToolBar(mainToolBar);
-        centralWidget = new QWidget(dungeonsounderClass);
-        centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        dungeonsounderClass->setCentralWidget(centralWidget);
+        dungeonsounderClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(dungeonsounderClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         dungeonsounderClass->setStatusBar(statusBar);
 
         retranslateUi(dungeonsounderClass);
+
+        tabWidget->setCurrentIndex(-1);
+
 
         QMetaObject::connectSlotsByName(dungeonsounderClass);
     } // setupUi
