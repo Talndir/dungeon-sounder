@@ -2,9 +2,12 @@
 
 #include "sound.h"
 
-struct SoundInfo
+class SoundInfo
 {
-	Sound& sound;
+public:
+	SoundInfo(QJsonObject& soundObject);
+
+	Sound* sound;
 	float volume;
 	float delay;
 	bool loop;
