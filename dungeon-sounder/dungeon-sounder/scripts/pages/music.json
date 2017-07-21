@@ -1,19 +1,11 @@
 {
 	"buttons": [
 		{
-			"name": "Thunderstorm",
-			"colour": "4444DD",
+			"name": "Exploring the world",
+			"colour": "6666CC",
 			"sounds": [
 				{
-					"sound": "rain",
-					"volume": 1.0,
-					"delay": 0.0,
-					"loop": "true",
-					"sync": "false",
-					"fade": 0.0
-				},
-				{
-					"sound": "thunder",
+					"sound": "From Past to Present",
 					"volume": 1.0,
 					"delay": 0.0,
 					"loop": "true",
@@ -25,11 +17,11 @@
 			"exclusive_global": "false"
 		},
 		{
-			"name": "Rain",
-			"colour": "7777FF",
+			"name": "In the forest",
+			"colour": "66CC66",
 			"sounds": [
 				{
-					"sound": "rain",
+					"sound": "Secunda",
 					"volume": 1.0,
 					"delay": 0.0,
 					"loop": "true",
@@ -37,15 +29,15 @@
 					"fade": 0.0
 				}
 			],
-			"exclusive_local": "false",
+			"exclusive_local": "true",
 			"exclusive_global": "false"
 		},
 		{
-			"name": "Thunder",
-			"colour": "666666",
+			"name": "Entering the city",
+			"colour": "CC6666",
 			"sounds": [
 				{
-					"sound": "thunder",
+					"sound": "The City Gates",
 					"volume": 1.0,
 					"delay": 0.0,
 					"loop": "true",
@@ -53,7 +45,7 @@
 					"fade": 0.0
 				}
 			],
-			"exclusive_local": "false",
+			"exclusive_local": "true",
 			"exclusive_global": "false"
 		}
 	]
