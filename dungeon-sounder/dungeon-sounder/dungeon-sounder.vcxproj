@@ -75,6 +75,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="buttonsoundengine.cpp" />
     <ClCompile Include="dungeonsounder.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_dungeonsounder.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -104,6 +105,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="buttonsoundengine.h" />
     <ClInclude Include="GeneratedFiles\ui_dungeonsounder.h" />
     <CustomBuild Include="dungeonsounder.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
@@ -126,6 +128,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_QUICK_LIB -DQT_QUICKWIDGETS_LIB -DQT_WIDGETS_LIB  "-IC:\Libraries\irrKlang\include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtMultimedia" "-I$(QTDIR)\include\QtQuick" "-I$(QTDIR)\include\QtQuickWidgets" "-I$(QTDIR)\include\QtWidgets" "-fstdafx.h" "-f../../soundbutton.h"</Command>
     </CustomBuild>
+    <ClInclude Include="sounddata.h" />
     <ClInclude Include="soundinfo.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

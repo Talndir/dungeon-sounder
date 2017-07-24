@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "dungeonsounder.h"
 
-std::vector<Sound> sounds;
+std::vector<Sound> sounds = std::vector<Sound>();
 
 dungeonsounder::dungeonsounder(QWidget *parent)
 	: QMainWindow(parent)
@@ -10,6 +10,14 @@ dungeonsounder::dungeonsounder(QWidget *parent)
 
 	loadSounds();
 	loadPages();
+
+	d.clear();
+	soundEngine = new ButtonSoundEngine();
+}
+
+dungeonsounder::~dungeonsounder()
+{
+	delete soundEngine;
 }
 
 bool dungeonsounder::loadSounds()
@@ -73,7 +81,7 @@ bool dungeonsounder::loadPage(QString pageName)
 	QJsonArray buttonArray = pageObject["buttons"].toArray();
 
 	for (unsigned int i = 0; i < buttonArray.size(); ++i)
-		layout->addWidget(createButton(buttonArray[i].toObject()));
+		layout->addWidget(createButton(buttonArray[i].toObject(), pageName));
 
 	page->setLayout(layout);
 	ui.tabWidget->addTab(page, pageName);
@@ -81,10 +89,17 @@ bool dungeonsounder::loadPage(QString pageName)
 	return true;
 }
 
-SoundButton* dungeonsounder::createButton(QJsonObject& buttonObject)
+SoundButton* dungeonsounder::createButton(QJsonObject& buttonObject, QString pageName)
 {
 	SoundButton* button = new SoundButton;
-	button->setup(buttonObject);
+	button->setup(buttonObject, pageName);
+	connect(button, SIGNAL(released()), this, SLOT(handleSoundButton()));
 
 	return button;
+}
+
+void dungeonsounder::handleSoundButton()
+{
+	QObject* button = QObject::sender();
+	soundEngine->pressButton((SoundButton*)button);
 }
