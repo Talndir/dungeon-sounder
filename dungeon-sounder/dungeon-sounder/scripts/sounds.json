@@ -5,45 +5,45 @@
 			"path": "$/weather/rain.wav",
 			"volume": 1.0,
 			"type": "weather",
-			"exclusive_single": "true",
-			"exclusive_type": "false",
-			"exclusive_global": "false"
+			"exclusive_single": true,
+			"exclusive_type": false,
+			"exclusive_global": false
 		},
 		{
 			"name": "thunder",
 			"path": "$/weather/thunder.wav",
 			"volume": 0.5,
 			"type": "weather",
-			"exclusive_single": "false",
-			"exclusive_type": "false",
-			"exclusive_global": "false"
+			"exclusive_single": false,
+			"exclusive_type": false,
+			"exclusive_global": false
 		},
 		{
 			"name": "From Past to Present",
 			"path": "$/music/From Past to Present.mp3",
 			"volume": 1.0,
 			"type": "music",
-			"exclusive_single": "true",
-			"exclusive_type": "true",
-			"exclusive_global": "false"
+			"exclusive_single": true,
+			"exclusive_type": true,
+			"exclusive_global": false
 		},
 		{
 			"name": "Secunda",
 			"path": "$/music/Secunda.mp3",
 			"volume": 1.0,
 			"type": "music",
-			"exclusive_single": "true",
-			"exclusive_type": "true",
-			"exclusive_global": "false"
+			"exclusive_single": true,
+			"exclusive_type": true,
+			"exclusive_global": false
 		},
 		{
 			"name": "The City Gates",
 			"path": "$/music/The City Gates.mp3",
 			"volume": 1.0,
 			"type": "music",
-			"exclusive_single": "true",
-			"exclusive_type": "true",
-			"exclusive_global": "false"
+			"exclusive_single": true,
+			"exclusive_type": true,
+			"exclusive_global": false
 		}
 	]
 }

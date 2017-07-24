@@ -8,21 +8,21 @@
 					"sound": "rain",
 					"volume": 1.0,
 					"delay": 0.0,
-					"loop": "true",
-					"sync": "false",
+					"loop": true,
+					"sync": false,
 					"fade": 0.0
 				},
 				{
 					"sound": "thunder",
 					"volume": 1.0,
 					"delay": 0.0,
-					"loop": "true",
-					"sync": "false",
+					"loop": true,
+					"sync": false,
 					"fade": 0.0
 				}
 			],
-			"exclusive_local": "true",
-			"exclusive_global": "false"
+			"exclusive_local": true,
+			"exclusive_global": false
 		},
 		{
 			"name": "Rain",

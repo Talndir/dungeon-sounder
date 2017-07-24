@@ -13,7 +13,7 @@ Sound::Sound(QJsonObject& soundObject)
 	QString p = soundObject["path"].toString();
 	
 	if (p[0] == '$')
-		p = QString("sounds").append(p.right(1));
+		p = QString("sounds").append(p.right(p.size() - 1));
 
 	this->path = p;
 }

@@ -1,6 +1,5 @@
-#include <stdafx.h>
-#include <SoundButton.h>
-#include "soundinfo.h"
+#include "stdafx.h"
+#include "soundbutton.h"
 
 SoundButton::SoundButton(QWidget* parent)
 	: QPushButton(parent)
@@ -8,12 +7,13 @@ SoundButton::SoundButton(QWidget* parent)
 
 }
 
-void SoundButton::setup(QJsonObject & buttonObject)
+void SoundButton::setup(QJsonObject & buttonObject, QString _pageName)
 {
 	this->setText(buttonObject["name"].toString());
 	this->setStyleSheet("background-color: #" + buttonObject["colour"].toString());
 	this->exclusive_local = buttonObject["exclusive_local"].toBool();
 	this->exclusive_global = buttonObject["exclusive_global"].toBool();
+	this->pageName = _pageName;
 
 	QJsonArray soundArray = buttonObject["sounds"].toArray();
 

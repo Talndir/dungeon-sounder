@@ -2,7 +2,6 @@
 
 #include "sound.h"
 
-extern std::vector<Sound> sounds;
 
 class SoundInfo
 {
