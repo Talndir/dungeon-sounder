@@ -23,9 +23,6 @@ void ButtonSoundEngine::pressButton(SoundButton * button)
 	{
 		SoundData s;
 		d = &button->sounds.at(i);
-
-		s.soundSource = this->engine->addSoundSourceFromFile(d->sound->path.toStdString().c_str());
-		s.soundSource->setDefaultVolume(d->volume * d->sound->volume);
 		
 		s.delay = d->delay;
 		s.fade = d->fade;
@@ -54,10 +51,24 @@ void ButtonSoundEngine::pressButton(SoundButton * button)
 				(s.page != "" && (s.page == l->page)) ||
 				(s.button != "" && (s.button == l->button)))
 			{
+				this->engine->removeSoundSource(soundData.at(j).soundSource);
 				soundData.erase(soundData.begin() + j);
 				--j;
 			}
 		}
+
+		s.soundSource = this->engine->getSoundSource(d->sound->path.toStdString().c_str(), false);
+
+		if (!s.soundSource)
+			s.soundSource = this->engine->addSoundSourceFromFile(d->sound->path.toStdString().c_str());
+		else
+		{
+			std::string str = s.soundSource->getName();
+			str.append("_x");
+			s.soundSource = this->engine->addSoundSourceAlias(s.soundSource, str.c_str());
+		}
+
+		s.soundSource->setDefaultVolume(d->volume * d->sound->volume);
 
 		newSounds.push_back(s);
 	}
