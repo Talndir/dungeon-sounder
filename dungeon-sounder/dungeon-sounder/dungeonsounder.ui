@@ -108,7 +108,7 @@
   </action>
   <action name="actionStop_sound">
    <property name="text">
-    <string>Stop single sound</string>
+    <string>Stop individual sounds</string>
    </property>
   </action>
   <action name="actionStop_sounds_from_page">

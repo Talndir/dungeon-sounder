@@ -134,7 +134,7 @@ public:
         actionNew_Sound->setText(QApplication::translate("dungeonsounderClass", "New Sound", Q_NULLPTR));
         actionNew_Button->setText(QApplication::translate("dungeonsounderClass", "New Button", Q_NULLPTR));
         actionNew_Page->setText(QApplication::translate("dungeonsounderClass", "New Page", Q_NULLPTR));
-        actionStop_sound->setText(QApplication::translate("dungeonsounderClass", "Stop single sound", Q_NULLPTR));
+        actionStop_sound->setText(QApplication::translate("dungeonsounderClass", "Stop individual sounds", Q_NULLPTR));
         actionStop_sounds_from_page->setText(QApplication::translate("dungeonsounderClass", "Stop sounds from this page", Q_NULLPTR));
         actionStop_all_sounds->setText(QApplication::translate("dungeonsounderClass", "Stop all sounds", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("dungeonsounderClass", "File", Q_NULLPTR));
