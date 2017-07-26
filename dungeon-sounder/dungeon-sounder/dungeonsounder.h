@@ -25,5 +25,4 @@ private:
 	SoundButton* createButton(QJsonObject& buttonObject, QString pageName);
 
 	ButtonSoundEngine* soundEngine;
-	std::vector<SoundData> d;
 };

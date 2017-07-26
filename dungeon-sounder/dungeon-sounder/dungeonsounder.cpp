@@ -11,7 +11,6 @@ dungeonsounder::dungeonsounder(QWidget *parent)
 	loadSounds();
 	loadPages();
 
-	d.clear();
 	soundEngine = new ButtonSoundEngine();
 }
 
