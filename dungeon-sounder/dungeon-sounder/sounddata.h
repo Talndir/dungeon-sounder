@@ -10,7 +10,8 @@ struct SoundData
 	QString type = "";
 	QString page = "";
 	QString button = "";
-	bool ex_global_track;
+	bool ex_global_track = false;
+	bool ex_local = false;
 
 	float delay;
 	bool loop;
