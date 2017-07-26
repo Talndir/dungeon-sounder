@@ -7,16 +7,18 @@ struct SoundData
 {
 	irrklang::ISoundSource* soundSource;
 	
-	QString type = "";
-	QString page = "";
-	QString button = "";
-	bool ex_global_track = false;
-	bool ex_local = false;
+	QString name;
+	QString type;
+	QString page;
+	QString button;
+
+	bool ex_type_track;
+	bool ex_global_track;
+	bool ex_local_button;
+	bool ex_global_button;
 
 	float delay;
 	bool loop;
 	bool sync;
 	float fade;
-
-	QString name;
 };
