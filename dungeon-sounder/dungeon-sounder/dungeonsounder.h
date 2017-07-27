@@ -15,8 +15,10 @@ public:
 
 private slots:
 	void handleSoundButton();
-	void stopAllSounds();
+	
+	void stopIndividualSounds();
 	void stopPageSounds();
+	void stopAllSounds();
 	
 private:
 	Ui::dungeonsounderClass ui;

@@ -13,9 +13,11 @@ dungeonsounder::dungeonsounder(QWidget *parent)
 
 	soundEngine = new ButtonSoundEngine();
 
+	QAction* edit_stopIndividual = ui.menuTools->actions().at(0);
 	QAction* edit_stopPage = ui.menuTools->actions().at(1);
 	QAction* edit_stopAll = ui.menuTools->actions().at(2);
 
+	connect(edit_stopIndividual, SIGNAL(triggered(bool)), this, SLOT(stopIndividualSounds()));
 	connect(edit_stopPage, SIGNAL(triggered(bool)), this, SLOT(stopPageSounds()));
 	connect(edit_stopAll, SIGNAL(triggered(bool)), this, SLOT(stopAllSounds()));
 }
@@ -25,14 +27,19 @@ dungeonsounder::~dungeonsounder()
 	delete soundEngine;
 }
 
-void dungeonsounder::stopAllSounds()
+void dungeonsounder::stopIndividualSounds()
 {
-	this->soundEngine->stopAll();
+	this->soundEngine->stopIndividual(this);
 }
 
 void dungeonsounder::stopPageSounds()
 {
 	this->soundEngine->stopPage(ui.tabWidget->tabText(ui.tabWidget->currentIndex()));
+}
+
+void dungeonsounder::stopAllSounds()
+{
+	this->soundEngine->stopAll();
 }
 
 bool dungeonsounder::loadSounds()

@@ -35,6 +35,9 @@
     <ClCompile Include="buttonsoundengine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="stopbutton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -80,6 +83,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sounddata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stopbutton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

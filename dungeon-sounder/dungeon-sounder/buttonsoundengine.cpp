@@ -28,17 +28,16 @@ void ButtonSoundEngine::pressButton(SoundButton * button)
 		s.fade = d->fade;
 		s.loop = d->loop;
 		s.sync = d->sync;
+
 		s.name = d->sound->name;
+		s.type = d->sound->type;
 		s.page = button->pageName;
-
+		s.button = button->text();
+		
+		s.ex_type_track = d->sound->exclusive_type;
 		s.ex_global_track = d->sound->exclusive_global;
-
-		if (d->sound->exclusive_type)
-			s.type = d->sound->type;
-		if (button->exclusive_local)
-			s.ex_local = true;
-		if (button->exclusive_global)
-			s.button = button->text();
+		s.ex_local_button = button->exclusive_local;
+		s.ex_global_button = button->exclusive_global;
 
 		// Apply sound rules
 		for (unsigned int j = 0; j < soundData.size(); ++j)
@@ -48,9 +47,9 @@ void ButtonSoundEngine::pressButton(SoundButton * button)
 			if (
 				(s.ex_global_track || l->ex_global_track) ||
 				(d->sound->exclusive_single && (l->name == d->sound->name)) ||
-				(s.type != "" && (s.type == l->type)) ||
-				(s.ex_local && (s.page == l->page)) ||
-				(s.button != "" && (s.button == l->button)))
+				(s.ex_type_track && (s.type == l->type)) ||
+				(s.ex_local_button && (s.page == l->page)) ||
+				(s.ex_global_button && (s.button == l->button)))
 			{
 				this->engine->removeSoundSource(soundData.at(j).soundSource);
 				soundData.erase(soundData.begin() + j);
@@ -65,8 +64,16 @@ void ButtonSoundEngine::pressButton(SoundButton * button)
 		else
 		{
 			std::string str = s.soundSource->getName();
-			str.append("_x");
-			s.soundSource = this->engine->addSoundSourceAlias(s.soundSource, str.c_str());
+			int n = 0;
+
+			do
+			{
+				str.append("_" + std::to_string(n));
+				s.soundSource = this->engine->getSoundSource(d->sound->path.toStdString().c_str(), false);
+				s.soundSource = this->engine->addSoundSourceAlias(s.soundSource, str.c_str());
+				str = str.substr(0, str.size() - 2);
+				++n;
+			} while (!s.soundSource);
 		}
 
 		s.soundSource->setDefaultVolume(d->volume * d->sound->volume);
@@ -81,15 +88,40 @@ void ButtonSoundEngine::pressButton(SoundButton * button)
 		this->engine->play2D(soundData.at(i).soundSource);
 }
 
-void ButtonSoundEngine::stopAll()
+void ButtonSoundEngine::stopIndividual(QWidget * parent)
 {
-	this->engine->stopAllSounds();
+	QDialog* dialog = new QDialog(parent);
+	QVBoxLayout* layout = new QVBoxLayout;
 
-	while (this->soundData.size())
+	for (unsigned int i = 0; i < soundData.size(); ++i)
 	{
-		this->engine->removeSoundSource(soundData.at(0).soundSource);
-		this->soundData.erase(this->soundData.begin());
+		SoundData& s = soundData.at(i);
+		QHBoxLayout* box = new QHBoxLayout;
+		
+		QLabel *name, *button, *page;
+		name = new QLabel(parent);
+		name->setText(s.name);
+		button = new QLabel(parent);
+		button->setText(s.button);
+		page = new QLabel(parent);
+		page->setText(s.page);
+
+		StopButton* stop = new StopButton;
+		stop->setIndex(i);
+		connect(stop, SIGNAL(stop(int)), this, SLOT(stop(int)));
+
+		box->addWidget(name);
+		box->addWidget(button);
+		box->addWidget(page);
+		box->addWidget(stop);
+
+		layout->addItem(box);
 	}
+
+	dialog->setLayout(layout);
+	dialog->setAttribute(Qt::WA_DeleteOnClose, true);
+	dialog->connect(dialog, SIGNAL(destroyed(QObject*)), this, SLOT(deleteMarked())); // destroyed
+	dialog->show();
 }
 
 void ButtonSoundEngine::stopPage(QString& page)
@@ -104,4 +136,34 @@ void ButtonSoundEngine::stopPage(QString& page)
 			--i;
 		}
 	}
+}
+
+void ButtonSoundEngine::stopAll()
+{
+	this->engine->stopAllSounds();
+
+	while (this->soundData.size())
+	{
+		this->engine->removeSoundSource(soundData.at(0).soundSource);
+		this->soundData.erase(this->soundData.begin());
+	}
+}
+
+void ButtonSoundEngine::deleteMarked()
+{
+	for (unsigned int i = 0; i < soundData.size(); ++i)
+	{
+		if (soundData.at(i).marked)
+		{
+			soundData.erase(soundData.begin() + i);
+			--i;
+		}
+	}
+}
+
+void ButtonSoundEngine::stop(int index)
+{
+	this->engine->removeSoundSource(soundData.at(index).soundSource);
+	this->soundData.at(index).marked = true;
+	//this->soundData.erase(this->soundData.begin() + index);
 }
