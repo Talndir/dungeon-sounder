@@ -21,4 +21,6 @@ struct SoundData
 	bool loop;
 	bool sync;
 	float fade;
+
+	bool marked = false;
 };
