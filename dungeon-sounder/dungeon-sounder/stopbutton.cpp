@@ -4,7 +4,7 @@
 StopButton::StopButton(QWidget *parent)
 	: QPushButton(parent)
 {
-	this->setText("Stop");
+	this->setText("X");
 	connect(this, SIGNAL(pressed()), this, SLOT(stopEmitter()));
 }
 
