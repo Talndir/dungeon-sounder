@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "buttonsoundengine.h"
+#include <QtWidgets\qtablewidget.h>
 
 ButtonSoundEngine::ButtonSoundEngine()
 {
@@ -92,33 +93,44 @@ void ButtonSoundEngine::stopIndividual(QWidget * parent)
 {
 	QDialog* dialog = new QDialog(parent);
 	QVBoxLayout* layout = new QVBoxLayout;
+	QTableWidget* table = new QTableWidget(soundData.size(), 4);
+
+	table->setHorizontalHeaderLabels(QStringList{ "Name", "Button", "Page", "" });
+	table->verticalHeader()->hide();
+
+	int columnWidth = 100;
+	int rowHeight = 25;
+	table->setColumnWidth(0, columnWidth);
+	table->setColumnWidth(1, columnWidth);
+	table->setColumnWidth(2, columnWidth);
+	table->setColumnWidth(3, 25);
 
 	for (unsigned int i = 0; i < soundData.size(); ++i)
 	{
 		SoundData& s = soundData.at(i);
-		QHBoxLayout* box = new QHBoxLayout;
 		
-		QLabel *name, *button, *page;
-		name = new QLabel(parent);
+		QLabel* name = new QLabel(parent);
 		name->setText(s.name);
-		button = new QLabel(parent);
+		QLabel* button = new QLabel(parent);
 		button->setText(s.button);
-		page = new QLabel(parent);
+		QLabel* page = new QLabel(parent);
 		page->setText(s.page);
 
 		StopButton* stop = new StopButton;
 		stop->setIndex(i);
 		connect(stop, SIGNAL(stop(int)), this, SLOT(stop(int)));
 
-		box->addWidget(name);
-		box->addWidget(button);
-		box->addWidget(page);
-		box->addWidget(stop);
+		table->setRowHeight(i, rowHeight);
 
-		layout->addItem(box);
+		table->setCellWidget(i, 0, name);
+		table->setCellWidget(i, 1, button);
+		table->setCellWidget(i, 2, page);
+		table->setCellWidget(i, 3, stop);
 	}
 
+	layout->addWidget(table);
 	dialog->setLayout(layout);
+	dialog->resize(353, 300);
 	dialog->setAttribute(Qt::WA_DeleteOnClose, true);
 	dialog->connect(dialog, SIGNAL(destroyed(QObject*)), this, SLOT(deleteMarked())); // destroyed
 	dialog->show();
